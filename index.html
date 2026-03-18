@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innove · Assessoria e Consultoria</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #f9fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* header */
+        header {
+            background: linear-gradient(135deg, #0b2b3f 0%, #123b4f 100%);
+            color: white;
+            padding: 1.2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-area img {
+            height: 50px;
+            width: auto;
+            border-radius: 12px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            color: #eab308;
+            font-weight: 400;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.2rem;
+        }
+
+        nav a:hover {
+            border-bottom-color: #eab308;
+            color: #eab308;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(rgba(11,43,63,0.85), rgba(11,43,63,0.9)), url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #eab308;
+            color: #0b2b3f;
+            padding: 0.9rem 2.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background-color: #f5c23b;
+            transform: scale(1.02);
+        }
+
+        /* seções */
+        section {
+            padding: 5rem 0;
+        }
+
+        section:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #0b2b3f;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #eab308;
+            border-radius: 4px;
+        }
+
+        .grid-2, .grid-3 {
+            display: grid;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            transition: 0.2s;
+            border: 1px solid #eef2f6;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.06);
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            color: #0b2b3f;
+            margin-bottom: 1rem;
+            border-left: 5px solid #eab308;
+            padding-left: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "▹";
+            color: #eab308;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .diferenciais {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .diferencial-item {
+            background: #f0f4f9;
+            padding: 1.8rem;
+            border-radius: 16px;
+            flex: 1 1 200px;
+            text-align: center;
+            font-weight: 500;
+            border-bottom: 4px solid #eab308;
+        }
+
+        /* Projetos - cards originais */
+        .projetos-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .projeto-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 20px;
+            border-left: 5px solid #eab308;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .projeto-card h3 {
+            color: #0b2b3f;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projetos - lista detalhada */
+        .projetos-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .projeto-item {
+            display: flex;
+            align-items: center;
+            background: #f9fafc;
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            border: 1px solid #eef2f6;
+            transition: 0.2s;
+        }
+
+        .projeto-item:hover {
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border-color: #eab308;
+        }
+
+        .projeto-logo {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            margin-right: 1.5rem;
+        }
+
+        .logo-placeholder-sm {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0b2b3f 0%, #123b4f 100%);
+            color: #eab308;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            text-transform: uppercase;
+        }
+
+        .projeto-info {
+            flex: 1;
+        }
+
+        .projeto-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: #0b2b3f;
+        }
+
+        .projeto-info p {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        .projeto-link {
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .btn-pdf {
+            display: inline-block;
+            background-color: #0b2b3f;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            border: 1px solid #0b2b3f;
+        }
+
+        .btn-pdf:hover {
+            background-color: #eab308;
+            color: #0b2b3f;
+            border-color: #eab308;
+        }
+
+        /* contato */
+        .contato-form {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.04);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid #dde3e9;
+            border-radius: 40px;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: #f9fafc;
+        }
+
+        textarea {
+            border-radius: 30px;
+            resize: vertical;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #eab308;
+            box-shadow: 0 0 0 3px rgba(234,179,8,0.15);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            background-color: #0b2b3f;
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1a4057;
+        }
+
+        footer {
+            background-color: #0b2b3f;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8rem;
+                margin-top: 1rem;
+                background: #0b2b3f;
+                padding: 1rem;
+                border-radius: 16px;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .projeto-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .projeto-logo {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .projeto-link {
+                margin-left: 0;
+                margin-top: 1rem;
+                align-self: stretch;
+            }
+
+            .btn-pdf {
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /* rodapé simplificado */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #eab308;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <!-- LOGOMARCA: arquivo logotiposfundo2.png -->
+                <img src="logotiposfundo2.png" alt="Innove">
+                <div class="logo-text">
+                    <h1>Innove</h1>
+                    <p>ASSESSORIA · CONSULTORIA · GESTÃO ESTRATÉGICA</p>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#quem-somos">Quem Somos</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#diferenciais">Diferenciais</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Assessoria especializada para prefeituras e terceiro setor</h2>
+            <p>Captação de recursos, gestão de convênios, prestação de contas e desenvolvimento de projetos sociais com foco em resultados.</p>
+            <a href="#contato" class="btn">Fale com um especialista</a>
+        </div>
+    </section>
+
+    <section id="quem-somos">
+        <div class="container">
+            <h2 class="section-title">Quem Somos</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <p style="font-size: 1.2rem; line-height: 1.7;">Somos uma empresa especializada em assessorar prefeituras e organizações sociais na captação, execução e prestação de contas de recursos públicos e privados. Nosso foco é fortalecer a gestão pública e promover o desenvolvimento social sustentável.</p>
+                    <p style="margin-top: 1.5rem;">Com equipe multidisciplinar e experiência comprovada em transferências governamentais (Transferegov, SICONV), atuamos em todas as etapas, desde a elaboração de propostas até a aprovação das contas.</p>
+                </div>
+                <div class="card" style="background: #eab30810; border: 1px dashed #eab308;">
+                    <h3 style="border-left-color: #0b2b3f;">Nossos números</h3>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li><strong>+50</strong> municípios atendidos</li>
+                        <li><strong>+100</strong> convênios aprovados</li>
+                        <li><strong>R$ 200M+</strong> em recursos captados</li>
+                        <li><strong>15 anos</strong> de experiência</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <div class="container">
+            <h2 class="section-title">Serviços Especializados</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Gestão de Transferências Governamentais</h3>
+                    <ul>
+                        <li>Acompanhamento de convênios (Transferegov, SICONV)</li>
+                        <li>Elaboração de propostas e planos de trabalho</li>
+                        <li>Prestação de contas e diligências</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Captação de Recursos & Editais</h3>
+                    <ul>
+                        <li>Mapeamento de editais nacionais/internacionais</li>
+                        <li>Elaboração de projetos para desenvolvimento urbano, social e ambiental</li>
+                        <li>Assessoria em emendas parlamentares</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Licitações e Contratos</h3>
+                    <ul>
+                        <li>Consultoria em procedimentos de compras públicas</li>
+                        <li>Elaboração de editais, pareceres e contratos</li>
+                        <li>Orientação a pregoeiros e comissões</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Educação, Saúde e Assistência Social</h3>
+                    <ul>
+                        <li>Adequação às normativas do SUAS, SUS e educação</li>
+                        <li>Elaboração de planos municipais (PNE, RAG, etc.)</li>
+                        <li>Capacitação de equipes técnicas</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Cultura, Turismo e Patrimônio</h3>
+                    <ul>
+                        <li>ICMS Cultural, inventários e tombamentos</li>
+                        <li>Projetos de turismo de natureza e cultural</li>
+                        <li>Captação via leis de incentivo</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>LGPD e Proteção de Dados</h3>
+                    <ul>
+                        <li>Adequação à Lei Geral de Proteção de Dados</li>
+                        <li>Serviço de DPO (encarregado de dados)</li>
+                        <li>Elaboração de políticas e pareceres</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diferenciais">
+        <div class="container">
+            <h2 class="section-title">Diferenciais Innove</h2>
+            <div class="diferenciais">
+                <div class="diferencial-item">Equipe multidisciplinar com experiência em gestão pública e terceiro setor</div>
+                <div class="diferencial-item">Parcerias estratégicas com órgãos governamentais e financiadores</div>
+                <div class="diferencial-item">Tecnologia integrada para transparência e eficiência</div>
+                <div class="diferencial-item">Atendimento humanizado e suporte contínuo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PROJETOS: cards originais + lista detalhada -->
+    <section id="projetos">
+        <div class="container">
+            <h2 class="section-title">Projetos Realizados</h2>
+
+            <!-- Cards originais (3) -->
+            <div class="projetos-lista">
+                <div class="projeto-card">
+                    <h3>Infraestrutura Urbana</h3>
+                    <p>Apoio à prefeitura na captação de recursos para pavimentação e saneamento.</p>
+                </div>
+                <div class="projeto-card">
+                    <h3>Educação e Saúde</h3>
+                    <p>Elaboração de projetos sociais para organizações do terceiro setor com foco em educação e saúde.</p>
+                </div>
+                <div class="projeto-card">
+                    <h3>Convênios Federais</h3>
+                    <p>Gestão de convênios para municípios de pequeno e médio porte, garantindo aprovação de contas.</p>
+                </div>
+            </div>
+
+            <!-- Lista de 10 projetos com logos e links PDF -->
+            <div style="margin-top: 3rem;">
+                <h3 style="font-size: 1.8rem; color: #0b2b3f; margin-bottom: 1.5rem; border-left: 5px solid #eab308; padding-left: 1rem;">Outros projetos em destaque</h3>
+                <div class="projetos-grid">
+                    <!-- 1 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">PNE</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Prefeitura de Nova Esperança</h3>
+                            <p>Plano Municipal de Saneamento Básico</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">IA</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Instituto Aprender</h3>
+                            <p>Capacitação de Educadores para Educação Infantil</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">SMS</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Secretaria Municipal de Saúde de Pedras Altas</h3>
+                            <p>Implantação do Prontuário Eletrônico</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">FEC</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Fundo Estadual de Cultura</h3>
+                            <p>Inventário do Patrimônio Cultural de Vila Rica</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 5 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">PMB</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Prefeitura de Monte Belo</h3>
+                            <p>Projeto de Revitalização da Orla Fluvial</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">OSS</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Organização Social Saúde Viva</h3>
+                            <p>Gestão de Convênio para Ampliação do Hospital</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">SED</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Secretaria de Educação de Lagoa Azul</h3>
+                            <p>Elaboração do Plano Municipal de Educação</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 8 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">IDR</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Instituto de Desenvolvimento Regional</h3>
+                            <p>Projeto de Apoio ao Turismo Rural</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 9 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">FIA</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Fundo da Infância e Adolescência</h3>
+                            <p>Projeto "Jovem Cidadão" - Capacitação Profissional</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                    <!-- 10 -->
+                    <div class="projeto-item">
+                        <div class="projeto-logo">
+                            <span class="logo-placeholder-sm">PMC</span>
+                        </div>
+                        <div class="projeto-info">
+                            <h3>Prefeitura de Morro Chato</h3>
+                            <p>Projeto de Sinalização Turística</p>
+                        </div>
+                        <div class="projeto-link">
+                            <a href="#" target="_blank" class="btn-pdf">📄 PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2 class="section-title">Fale com a Innove</h2>
+            <div class="contato-form">
+                <!-- FORMULÁRIO PRINCIPAL (via Formspree) -->
+                <form action="https://formsfree.io/f/mvzwvjva" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="E-mail profissional" required>
+                    </div>
+                    <!-- CAMPO TELEFONE -->
+                    <div class="form-group">
+                        <input type="tel" name="telefone" placeholder="Telefone (com DDD)" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="assunto" placeholder="Assunto">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="mensagem" rows="5" placeholder="Conte-nos sobre seu projeto ou necessidade..." required></textarea>
+                    </div>
+                    <button type="submit">Enviar mensagem</button>
+                </form>
+
+                <!-- LINK PARA O GOOGLE FORMS (abaixo do formulário) -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p>Ou se preferir, utilize nosso formulário detalhado:</p>
+                    <a href="https://forms.gle/sxNTVqG2MDM624WSA" target="_blank" rel="noopener" class="btn" style="background-color: #0b2b3f; margin-top: 0.5rem;">
+                        📋 Abrir formulário detalhado (Google Forms)
+                    </a>
+                </div>
+
+                <p style="text-align: center; margin-top: 2rem; color: #4b5563;">
+                    Ou envie um e-mail para <strong>contato@innove.social.br</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Innove · Assessoria, Consultoria e Gestão Estratégica</p>
+            <div class="footer-links">
+                <a href="#inicio">Início</a>
+                <a href="#quem-somos">Quem Somos</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <p style="margin-top: 1.5rem; opacity: 0.7;">© 2025 Innove. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // menu mobile
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('menu');
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        // suavizar scroll ao clicar nos links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // fechar menu mobile se aberto
+                    menu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
